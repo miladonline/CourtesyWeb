@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!-- courtesyapp.co/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=750, maximum-scale=1.0" name="viewport">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+    <title>Courtesy - Contact Us</title>
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="http://courtesyapp.co/contact/">
+    <meta property="og:title" content="Courtesy - Contact Us">
+    <meta property="og:description" content="Increase table turnover by cutting dining time in half, and reach busy diners by offering a quicker meal.">
+    <meta name="description" content="Grow your business with Courtesy - A simple solution for your local business to advertise towards the student population.">
+  	<meta name="keywords" content="Courtesy, rewards, points, mobile, app, student, shop, earn, lock, discount, discounts, deals, shopping, food, clothes, clothing, business, sports, smartphone, phone, productivity, discounts, android, iphone, ios, startup, san, diego, spot, meal, dish, diner, lunch, restaurant">
+
+ <link type="text/css" rel="stylesheet prefetch" href="css/style_page_contact.css">
+ <link type="text/css" rel="preload stylesheet" href="css/style_page_for_users.css">
+
+
+
+        <script type="text/javascript" src="js/style_page_contact.js"></script>
+
+         <script src="js/utils.js" type="text/javascript"></script>
+         <script>
+			$( document ).ready(function() {
+
+				 $('#submit').click(function(){
+					var email_pattern = /^[a-zA-Z0-9]+[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+					var phonepattern = /^(\d[\s-]?)?[\(\[\s-]{0,2}?\d{3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i;
+					var pattern = /^[0-9]+$/;
+					var name=$('#full_name').val();
+					var email=$('#email').val();
+					var subject=$('#subject').val();
+					var msg=$('#message').val();
+					if (name == '') {
+						alert("Name is required!");
+						return false;
+					} else if (name != '' && pattern.test(name) !== false) {
+						alert("Please enter valid name!");
+						return false;
+					} else if (email == '') {
+						alert("Email address is required!");
+						return false;
+					} else if (email != '' && email_pattern.test(email) === false) {
+						alert("Please enter valid email id!");
+						return false;
+					} else if (subject == '') {
+						alert("Subject is required!");
+						return false;
+					} else if (msg == '') {
+						alert("Message is required!");
+						return false;
+					} else {
+						//alert("cc");
+            $("#submit").hide();
+                  $("#errmsg").show();
+					 $.ajax({
+						  url: 'request_demo.php',
+						  type: 'post',
+						  data: {'action': 'contact', 'name': name, 'email': email, 'msg': msg, 'subject': subject},
+						  success: function(data, status) {
+							$('#popdis').hide();
+							alert('Thanks for your interest!!\n We will contact you soon ');
+							 //$('#popdis2').show();
+							 $('#full_name').val('');
+							 $('#email').val('');
+							$('#subject').val('');
+							$('#message').val('');
+                $("#submit").show();
+                  $("#errmsg").hide();
+						  },
+						  error: function(xhr, desc, err) {
+							alert('Error in sending mail');
+                    $("#submit").show();
+                      $("#errmsg").hide();
+						  }
+						}); // end ajax call
+						return false;
+					}
+				 });
+
+			});
+     </script>
+     <script type="text/javascript">
+		function validateForm(){/*
+	        if( !document.form_subs.subsEmail.value )
+			   {
+				 alert( "Please enter email id!" );
+				 document.form_subs.subsEmail.focus() ;
+				 return false;
+			   }
+			   var pattern = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			   if(!pattern.test(document.form_subs.subsEmail.value)){
+			    alert( "Please enter valid email id!" );
+				 document.form_subs.subsEmail.focus() ;
+				 return false;
+			   }
+            return true;
+			*/
+		}
+	 </script>
+	 <script>
+	    function formvalidation(){
+		var nm=document.myForm.getElementById('name');
+		if( !nm.value ){
+		  alert('please enter your name');
+		  document.nm.focus();
+		  return false;
+		}
+        return true;
+        }
+	 </script>
+	 <style>
+		body , html
+		{
+   			 background-color: white;
+   		}
+	 	header
+	 	{
+	 		display: table;
+		    background-color: #33a8e0;
+		    width: 100%;
+		    height: 13vh;
+		    min-height: 0%;
+		    padding: 52px 0;
+		    color: #fff;
+		    text-align: center;
+		    vertical-align: middle;
+		    position: relative;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		    background-position: center;
+		    background-repeat: no-repeat;
+		    -webkit-background-size: cover;
+		    -moz-background-size: cover;
+		    -o-background-size: cover;
+		    background-size: cover;
+	 	}
+	 	.top-nav_list a:hover {
+		    color: #fff;
+		    text-decoration: none;
+		}
+		textarea {
+		   resize: none;
+		}
+	 </style>
+
+ </head>
+
+
+<!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+<header>
+    <nav class="top-nav">
+        <div class="wrapper top-nav_content clearfix">
+            <div class="nav-buttons">
+                <button class="hamburger icon-menu"></button>
+                <button class="cross icon-cross"></button>
+            </div>
+            <div class="logo-block">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="courtesyapp">
+                </a>
+            </div>
+            <ul class="top-nav_list nav_list">
+                <li><a href="index.html" class="nav_item">Users</a>
+                </li>
+                <li><a href="businesses.html" class="nav_item">Businesses</a>
+                </li>
+                <li><a href="contact-us.html" class="nav_item">Contact</a>
+                <li><a href="/Business/" class="nav_item">Log In</a>
+                </li>
+            </ul>
+            <div class="top-nav_overlay"></div>
+        </div>
+    </nav>
+</header>
+
+<section class="demo-request">
+    <section class="wrapper getstarted" id="getstarted">
+    <div class="section_title getstarted_title">
+        <h2>Contact Us</h2>
+    </div>
+    <div class="section_title thanks_info">
+        <h2>Thanks!</h2>
+    </div>
+    <div class="getstarted_form">
+        <form   method="post" id="merchant-auth-form">
+            <div class="getstarted_form-item">
+            	<input type="text" placeholder="Full Name"  name="full_name" id="full_name"  class="getstarted_input">
+            </div>
+            <div class="getstarted_form-item">
+                <input type="text" placeholder="E-mail" id="email" name="email" class="getstarted_input">
+            </div>
+            <div class="getstarted_form-item">
+                <input type="text" placeholder="Subject" id="subject" name="subject" class="getstarted_input">
+            </div>
+            <div class="getstarted_form-item">
+                <textarea class="textarea" rows="15" placeholder="Your message" id="message" name="message"></textarea>
+            </div>
+
+           	<input type="submit" name="submit" id="submit" class="btn-blue" value="submit">
+            <i style="display:none;" id="errmsg">Sending...</i>
+
+            <!--button class="btn-blue" type="submit" name="submit">GET STARTED NOW</button-->
+            <!--p class="getstarted_info">We will contact you shortly.</p-->
+        </form>
+    </div>
+</section>
+
+</section>
+
+<footer>
+    <div class="clearfix">
+        <div class="footer--half footer--right">
+            <ul class="nav_list">
+                <li><a href="index.html">For Users</a></li>
+                <li><a href="">Request a Demo</a></li>
+                <li class="terms-link"><a href="">Terms &amp; Privacy</a></li>
+                <li class="soc_icons">
+                    <a href="https://www.facebook.com/CourtesyApp" id="go-to-facebook" class="icon-facebook" target="_blank"></a>
+                    <a href="https://twitter.com/Courtesy_App" id="go-to-twitter" class="icon-twitter" target="_blank"></a>
+                    <a href="https://www.yelp.com/user_details?userid=6bgWWo1OaXJ4nVztjGzpVQ" class="icon-yelp" id="go-to-google+" target="_blank"></a>
+                    <a href="https://www.instagram.com/courtesyapp/" id="go-to-instagram" class="icon-instagram" target="_blank"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer--half footer--left">
+            <ul class="nav_list">
+                <li>© 2016 Courtesy</li>
+                <li class="terms-link"><a href="">Terms &amp; Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+
+</body></html>

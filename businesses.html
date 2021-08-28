@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<!-- courtesyapp.co/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=750, maximum-scale=1.0" name="viewport">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+    <title>Courtesy For Business</title>
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="http://courtesyapp.co/businesses">
+    <meta property="og:title" content="Grow your business with Courtesy">
+    <meta property="og:description" content="Grow your business with Courtesy - A simple solution for your local business to advertise towards the student population.">
+    <meta name="description" content="Grow your business with Courtesy - A simple solution for your local business to advertise towards the student population.">
+    <meta name="keywords" content="Courtesy, rewards, points, mobile, app, student, coupons, deals, shop, earn, lock, discount, discounts, shopping, food, clothes, clothing, business, sports, smartphone, phone, productivity, discounts, android, iphone, ios, startup, san, diego, spot, meal, dish, diner, lunch, restaurant">
+
+     <link type="text/css" rel="preload stylesheet" href="css/style_page_for_business.css">
+    <!--link type="text/css" rel="preload stylesheet" href="css/style_page_for_users.css"-->
+
+	<script type="text/javascript" src="js/style_page_for_users.js"></script>
+
+
+         <script src="js/utils.js" type="text/javascript"></script>
+        <script>
+     $( document ).ready(function() {
+
+        $('#submit').click(function(){
+         var email_pattern = /^[a-zA-Z0-9]+[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+         var phonepattern = /^(\d[\s-]?)?[\(\[\s-]{0,2}?\d{3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i;
+         var pattern = /^[0-9]+$/;
+         var name=$('#name').val();
+         var email=$('#email').val();
+         var phone=$('#phone').val();
+         var company_title=$('#company_title').val();
+         var city=$('#city').val();
+         if (name == '') {
+           alert("Name is required!");
+           return false;
+         } else if (name != '' && pattern.test(name) !== false) {
+           alert("Please enter valid name!");
+           return false;
+         } else if (email == '') {
+           alert("Email address is required!");
+           return false;
+         } else if (email != '' && email_pattern.test(email) === false) {
+           alert("Please enter valid email id!");
+           return false;
+         } else if (phone == '') {
+           alert("phone is required!");
+           return false;
+         } else if (company_title == '') {
+           alert("Company Name is required!");
+           return false;
+         }
+         else if (city == '') {
+           alert("City is required!");
+           return false;
+         } else {
+           //alert("cc");
+           $("#submit").hide();
+                 $("#errmsg").show();
+          $.ajax({
+             url: 'request_demo.php',
+             type: 'post',
+             data: {'action': 'demo', 'name': name, 'email': email, 'phone': phone, 'company_title': company_title, 'city': city},
+             success: function(data, status) {
+             $('#popdis').hide();
+             alert('Thanks for your interest!!\n We will contact you soon ');
+              //$('#popdis2').show();
+              $('#name').val('');
+              $('#email').val('');
+             $('#phone').val('');
+             $('#company_title').val('');
+             $('#city').val('');
+               $("#submit").show();
+                 $("#errmsg").hide();
+             },
+             error: function(xhr, desc, err) {
+             alert('Error in sending mail');
+                   $("#submit").show();
+                     $("#errmsg").hide();
+             }
+           }); // end ajax call
+           return false;
+         }
+        });
+
+     });
+    </script>
+    <script>
+       function formvalidation(){
+     var nm=document.myForm.getElementById('name');
+     if( !nm.value ){
+       alert('please enter your name');
+       document.nm.focus();
+       return false;
+     }
+         return true;
+         }
+    </script>
+</head>
+<body>
+
+<!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+<!--header data-parallax="scroll" data-image-src="img/header-img-users.jpg">
+    <nav class="top-nav">
+        <div class="top-nav_content clearfix">
+            <div class="logo-block">
+                <a href="businesses.html">
+                    <img src="img/logo.png" alt="courtesyapp.co">
+                </a>
+                <span class="logo-text">For Business</span>
+            </div>
+  	    <ul class="top-nav_list nav_list">
+                <li><a href="index.html" class="nav_item">Users</a>
+                </li>
+                <li><a href="businesses.html" class="nav_item">Businesses</a>
+                </li>
+                <li><a href="contact-us.html" class="nav_item">Contact</a>
+                <li><a href="/Business/" class="nav_item">Log In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="header_content">
+        <div class="header_text">
+            <h1><span class="row-wrap">Are you a business owner?</span>
+            </h1>
+              <h2><span class="row-wrap">Join our list of partners and find out how you can increase</span><span class="row-wrap">sales while enhancing customer experience and loyalty</span>
+            </h2>
+            <a href="#getstarted" class="btn-blue">Get Started</a>
+        </div>
+    </div>
+</header-->
+<style>
+  .wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+.header-fixed nav {
+    position: fixed;
+    top: 0
+}
+
+.nav_list li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle
+}
+  header {
+    display: table;
+    width: 100%;
+    height: 100vh;
+    min-height: 100%;
+    padding: 90px 0;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover
+}
+.header-bg--wrapper {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1
+}
+.header-bg {
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/bg-header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    will-change: transform
+}
+.header_content {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
+    max-width: 670px;
+    text-align: center
+}
+.header_text {
+    font-size: 14px;
+    padding: 30px;
+    letter-spacing: -0.10px
+}
+.header_content h1 {
+    font-size: 2.79em;
+    margin: 0 0 30px
+}
+.header_content h2 {
+    font-family: "GothamProLight", Arial, Helvetica, sans-serif;
+    font-size: 1.6em;
+    margin-bottom: 30px;
+    line-height: 1.3
+}
+.top-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    color: #fff;
+    z-index: 10;
+    width: 100%;
+}
+.top-nav .logo-block {
+    float: left;
+    width: 200px
+}
+.top-nav .logo-block a {
+    display: block;
+	padding: 10px 10px 0 0;
+}
+.top-nav .logo-block a img {
+    width: auto;
+    height: 45px;
+}
+.top-nav_list {
+    line-height: 35px;
+    float: right;
+    font-size: 16px;
+	font-family:"GothamProMedium",Arial,Helvetica,sans-serif;
+	padding-top:10px;
+
+}
+.top-nav_list li {
+    margin-left: 50px
+}
+.top-nav_list .app-link {
+    display: none
+}
+.top-nav_list a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer
+}
+
+.top-nav_list a:hover {
+	color:#33a8e0;
+	text-decoration:none
+}
+
+.top-nav_overlay {
+    display: none
+}
+.btn-hidden,
+.btn-shown,
+.hamburger,
+.cross {
+    display: none
+}
+.hamburger,
+.cross {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 15px;
+    color: #fff;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    z-index: 10000000000000;
+    background-color: transparent;
+    line-height: 1
+}
+.hamburger:before,
+.cross:before {
+    font-family: 'icomoon'!important;
+    font-size: 70px;
+    font-weight: 100
+}
+.soc_icons a:before {
+    font-family: 'icomoon'!important;
+    font-size: 15px
+}
+</style>
+<header  data-parallax="scroll" data-image-src="img/header-img-users.jpg">
+    <nav class="top-nav">
+        <div class="wrapper top-nav_content clearfix">
+            <div class="nav-buttons">
+                <button class="hamburger icon-menu"></button>
+                <button class="cross icon-cross"></button>
+            </div>
+            <div class="logo-block">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="courtesyapp">
+                </a>
+            </div>
+            <ul class="top-nav_list nav_list">
+                <li><a href="index.html" class="nav_item">Users</a>
+                </li>
+                <li><a href="businesses.html" class="nav_item">Businesses</a>
+                </li>
+                <li><a href="contact-us.html" class="nav_item">Contact</a>
+                <li><a href="/Business/" class="nav_item">Log In</a>
+                </li>
+            </ul>
+            <div class="top-nav_overlay"></div>
+        </div>
+    </nav>
+    <div class="header_content">
+        <div class="header_text">
+            <h1>
+                <span class="row-wrap">Are you a business owner?</span>
+            </h1>
+           	<h2>
+                <span class="row-wrap">Join our list of partners and find out how you can increase </span><span class="row-wrap">sales while enhancing customer experience and loyalty</span>
+
+            </h2>
+            <a href="#getstarted" class="btn-blue">Get Started</a>
+        </div>
+    </div>
+</header>
+
+<section class="wrapper advantages">
+    <div class="advantages_item">
+    	<img src="img/business-advantages-icon-01.png" atl="courtesy benefits">
+        <h2>Boost Traffic and Sales</h2>
+        <p><span class="row-wrap">We connect students to local businesses</span><span class="row-wrap">in order to boost their sales and traffic.</span></p>
+    </div>
+    <div class="advantages_item">
+    	<img src="img/business-advantages-icon-02.png" atl="courtesy benefits">
+        <h2>Leverage Social Media</h2>
+        <p><span class="row-wrap">We help improve your social media</span> <span class="row-wrap">presence by gamifying social engagement.</span></p>
+    </div>
+    <div class="advantages_item">
+    	<img src="img/business-advantages-icon-03.png" atl="courtesy benefits">
+        <h2>Enhance Customer Loyalty</h2>
+        <p><span class="row-wrap">We bring new customers to your door </span> <span class="row-wrap">and turn them into loyal customers.</span>
+         </p>
+    </div>
+</section>
+
+<section class="four-steps" style="background-color: #fff; box-shadow: 0px 0px 8px 0px rgba(30, 30, 30, 0.58);">
+	<div id="profile" style="padding-top: 15px;">
+    	<div class="row">
+        	<div class="four-steps-01 four-steps-02 text-center" style="padding-top: 35px;">
+            	<h3 style="font-weight: 600; padding-bottom: 50px;">How it Works</h3>
+                	<div class="four-steps-01 four-steps-02">
+                    	<div class="four-steps-text">
+                        	<img width="250" src="img/four-steps-01.png" style="margin-top: 24px;">
+                        </div>
+                        <div class="four-steps-text text-left">
+                        <h5 style="font-weight: 300;">Easy Setup</h5>
+                        <p>We will work with you to craft a unique rewards program for your business. You can get started right away with 3 or more exclusive discount offers. No hardware / software installation or POS integration.</p>
+                        </div>
+                    </div>
+                    <div class="four-steps-01 four-steps-02">
+                    	<div class="four-steps-text">
+                        	<img width="250" src="img/four-steps-02.png" style="margin-top: 24px;">
+                        </div>
+                        <div class="four-steps-text text-left">
+                        <h5 style="font-weight: 300;">Risk Free</h5>
+                        <p>Your offers are then exposed to thousands of students and diners. You only pay when there is a redemption and actual conversion, never pay monthly fees or pay-per-click fees that do not guarantee a result.</p>
+                        </div>
+                    </div>
+                    <div class="four-steps-01 four-steps-02">
+                    	<div class="four-steps-text">
+                        	<img width="250" src="img/four-steps-03.png" style="margin-top: 24px;">
+                        </div>
+                        <div class="four-steps-text text-left">
+                        <h5 style="font-weight: 300;">Easy Redemption</h5>
+                        <p>Redemption process is design to be simple and hassle free. Customer shows up to your store with redemption screen on their cellphone. Simply hit “Cashier Press Here” button and apply discount!</p>
+                        </div>
+                    </div>
+                    <div class="four-steps-01 four-steps-02">
+                    	<div class="four-steps-text">
+                        	<img width="250" src="img/four-steps-04.png" style="margin-top: 24px;">
+                        </div>
+                        <div class="four-steps-text text-left">
+                        <h5 style="font-weight: 300;">Customer Analytics</h5>
+                        <p>After setup we will give you access to your own custom portal where you can add or edit your offerings in real time. You can also monitor performance of your campaigns in real time in the analytics section.</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="next-step">
+    <div class="wrapper">
+        <div class="next-step_content">
+            <h2>Take the next step to grow your business</h2>
+        </div>
+    </div>
+</section>
+
+
+<section class="demo-request">
+    <section class="wrapper getstarted" id="getstarted">
+    <div class="section_title getstarted_title">
+        <h2>Request a Demo</h2>
+    </div>
+    <div class="section_title thanks_info">
+        <h2>Thanks!</h2>
+    </div>
+    <div class="getstarted_form">
+        <form  method="post" id="merchant-auth-form">
+            <div class="getstarted_form-item">
+                <input type="text" class="getstarted_input" placeholder="Name" id="name" name="name" required="" data-validation-required-message="Please enter your name.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="getstarted_form-item">
+                <input type="email" class="getstarted_input" placeholder="Email" id="email" name="email" required="" data-validation-required-message="Please enter your email address.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="getstarted_form-item">
+                <input type="tel" class="getstarted_input phone" placeholder="Phone Number"  id="phone" name="phone" required="" data-validation-required-message="Please enter your phone number.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="getstarted_form-item">
+                <input type="text" class="getstarted_input" id="company_title" name="company_title" placeholder="Company Name" required="" data-validation-required-message="Please enter your phone number.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="getstarted_form-item">
+                <input type="text" class="getstarted_input" name="city" id="city" placeholder="City" required="" data-validation-required-message="Please enter your phone number.">
+                <p class="help-block text-danger"></p>
+            </div>
+            <input type="submit" name="submit" id="submit" class="btn-blue" value="GET STARTED NOW">
+            <!-- <button class="btn-blue" type="submit" name="submit" id="submit">GET STARTED NOW</button> -->
+              <i style="display:none;" id="errmsg">Sending...</i>
+        </form>
+    </div>
+</section>
+
+</section>
+
+<footer>
+    <div class="clearfix">
+        <div class="footer--half footer--right">
+            <ul class="nav_list">
+                <li><a href="index.html">For Users</a></li>
+                <li><a href="">Request a Demo</a></li>
+                <li class="terms-link"><a href="">Terms &amp; Privacy</a></li>
+                <li class="soc_icons">
+                    <a href="https://www.facebook.com/CourtesyApp" id="go-to-facebook" class="icon-facebook" target="_blank"></a>
+                    <a href="https://twitter.com/Courtesy_App" id="go-to-twitter" class="icon-twitter" target="_blank"></a>
+                    <a href="https://www.yelp.com/user_details?userid=6bgWWo1OaXJ4nVztjGzpVQ" class="icon-yelp" id="go-to-google+" target="_blank"></a>
+                    <a href="https://www.instagram.com/courtesyapp/" id="go-to-instagram" class="icon-instagram" target="_blank"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer--half footer--left">
+            <ul class="nav_list">
+                <li>© 2016 Courtesy</li>
+                <li class="terms-link"><a href="">Terms &amp; Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<!--
+<div id="app-pop-up" class="pop-up">
+    <span class="pop-up_close icon-cross"></span>
+    <h3>Download Courtesy</h3>
+    <div class="download-buttons clearfix">
+        <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=1140003845&mt=8" class="btn-blue apple-btn app-btn" target="_blank">
+            <span class="icon icon-apple"></span>
+            <span class="btn-text">iphone app</span>
+        </a>
+    </div>
+
+</div> -->
+
+<div id="overlay"></div>
+
+
+</body></html>
